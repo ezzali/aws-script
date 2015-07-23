@@ -1,0 +1,29 @@
+# Validate the usename
+if [ ! -z "$1" -a "$1" != " " ]; then
+  user=$1
+else
+  echo "Username is required."
+  return 1
+fi
+
+# Validate the account
+if [ ! -z "$2" -a "$2" != " " ]; then
+  account=$2
+else
+  echo "Account is required."
+  return 1
+fi
+
+region=`[ ! -z "$3" -a "$3" != " " ] && echo "$3" || echo "ap-southeast-2"`
+
+export HTTP_PROXY=`sed -ne 's/^http_proxy=//p' ~/.proxy`
+export HTTPS_PROXY=`sed -ne 's/^https_proxy=//p' ~/.proxy`
+
+export AWS_ACCESS_KEY_ID=`aws configure get aws_access_key_id --profile "${user} ${account}"`
+export AWS_SECRET_ACCESS_KEY=`aws configure get aws_secret_access_key --profile "${user} ${account}"`
+export AWS_DEFAULT_REGION=${region}
+export AWS_SESSION_TOKEN=
+
+export PS1="${user}@${account} ${region}\$ "
+
+alias exit='. awsh_exit'
