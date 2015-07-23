@@ -35,7 +35,7 @@ Simply type exit to quit your AWS session.
 ```bash
 exit
 ```
-## Switch Role
+## Switching Role
 
 You can switch to a different cross account role from the current login account. [Note] You need to download groovy to be able to run the script. Alternatively, you can replace the parser.groovy script with JQ: http://stedolan.github.io/jq/
 
