@@ -12,7 +12,7 @@ e.g. ". awsh ezzali dev"
 
 ### AWS Credential
 
-Make sure your AWS credential file has been created in the ~/.aws folder as such:
+Make sure your AWS credential file has been created in the ~/.aws/credentials folder as such:
 
 ```bash
 [ezzali dev]
