@@ -4,8 +4,18 @@ unset HTTPS_PROXY
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
 unset AWS_DEFAULT_REGION
-unset AWS_SESSION_TOKEN
 
+unset AWS_CURRENT_ACCOUNT
+unset AWS_CURRENT_USER
+
+unalias role
 unalias exit
+
+unalias cloudformation
+unalias route53
+unalias s3
+unalias dynamodb
+unalias ec2
+unalias iam
 
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\W\[\033[m\]\$ "

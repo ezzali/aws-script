@@ -1,0 +1,27 @@
+# Validate the cross account
+if [ ! -z "$2" -a "$2" != " " ]; then
+  CROSS_ACCOUNT=$2
+else
+  echo "Account is required."
+  return 1
+fi
+
+# Validate the role
+if [ ! -z "$1" -a "$1" != " " ]; then
+  CROSS_ROLE=$1
+else
+  echo "Role is required."
+  return 1
+fi
+
+ROLE_SESSION_NAME=`echo "arn:aws:iam::${CROSS_ACCOUNT}:role/${CROSS_ROLE}" | md5`
+
+export ROLE_OUTPUT=`aws sts assume-role --role-arn "arn:aws:iam::${CROSS_ACCOUNT}:role/${CROSS_ROLE}" --role-session-name "${ROLE_SESSION_NAME}"`
+
+eval `groovy parser.groovy`
+
+alias exit='. role_exit'
+
+export PS1="${AWS_CURRENT_USER}@${CROSS_ACCOUNT} ${CROSS_ROLE}\$ "
+
+
