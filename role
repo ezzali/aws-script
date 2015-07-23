@@ -20,6 +20,8 @@ export ROLE_OUTPUT=`aws sts assume-role --role-arn "arn:aws:iam::${CROSS_ACCOUNT
 
 eval `groovy parser.groovy`
 
+alias role='echo "Exit the current role before switching a different role."'
+
 alias exit='. role_exit'
 
 export PS1="${AWS_CURRENT_USER}@${CROSS_ACCOUNT} ${CROSS_ROLE}\$ "
