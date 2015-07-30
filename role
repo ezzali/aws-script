@@ -18,7 +18,7 @@ ROLE_SESSION_NAME=`echo "arn:aws:iam::${CROSS_ACCOUNT}:role/${CROSS_ROLE}" | md5
 
 export ROLE_OUTPUT=`aws sts assume-role --role-arn "arn:aws:iam::${CROSS_ACCOUNT}:role/${CROSS_ROLE}" --role-session-name "${ROLE_SESSION_NAME}"`
 
-eval `groovy parser.groovy`
+eval `groovy ~/bin/parser.groovy`
 
 alias role='echo "Exit the current role before switching a different role."'
 
